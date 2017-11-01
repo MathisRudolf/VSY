@@ -4,24 +4,40 @@ import json
 
 import cherrypy
 
+from controller.user_controller import UserController
+from controller.entry_controller import EntryController
+from controller.login_controller import LoginController
+
+from model.user import User
+from model.entry import Entry
+
 # ----------------------------------------------------------
-class Application_cl(object):
+class Application(object):
 
     exposed = True  # gilt für alle Methoden
 
     def __init__(self):
-        self.handler_o = {}
+
+        self.login = None
+        self.handler_o = {
+            "user": UserController(),
+            "entry": EntryController(),
+            "login": LoginController
+        }
 
 
     # -------------------------------------------------------
-    def GET(self, path_spl, id=None):
+    def GET(self, path_s, id=None):
+
+        if self.login == None:
+            pass
 
         retVal_o = {
             'data': None
         }
 
-        if path_spl in self.handler_o:
-            retVal_o = self.handler_o[path_spl].GET(id)
+        if path_s in self.handler_o:
+            retVal_o = self.handler_o[path_s].GET(id)
 
         if retVal_o['data'] == None:
             cherrypy.response.status = 404
@@ -30,14 +46,14 @@ class Application_cl(object):
 
 
     # -------------------------------------------------------
-    def POST(self, path_spl, **data_opl):
+    def POST(self, path_s, **data_opl):
 
         retVal_o = {
             'id': None
         }
 
-        if path_spl in self.handler_o:
-            retVal_o = self.handler_o[path_spl].POST(data_opl)
+        if path_s in self.handler_o:
+            retVal_o = self.handler_o[path_s].POST(data_opl)
 
         if retVal_o['id'] == None:
             cherrypy.response.status = 409
@@ -60,14 +76,14 @@ class Application_cl(object):
         return json.dumps(retVal_o)
 
     # -------------------------------------------------------
-    def DELETE(self, path_spl, id=None):
+    def DELETE(self, path_s, id=None):
 
         retVal_o = {
             'id': id
         }
 
-        if path_spl in self.handler_o:
-            retVal_o = self.handler_o[path_spl].DELETE(id)
+        if path_s in self.handler_o:
+            retVal_o = self.handler_o[path_s].DELETE(id)
 
         if retVal_o['id'] == None:
             cherrypy.response.status = 404

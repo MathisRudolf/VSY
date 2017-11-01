@@ -48,7 +48,7 @@ def main():
     })
 
     # Request-Handler definieren
-    cherrypy.tree.mount(application.Application_cl(), '/', staticConfig_o)
+    cherrypy.tree.mount(application.Application(), '/', staticConfig_o)
     cherrypy.tree.mount(templates.Templates_cl(), '/templates', staticConfig2_o)
     cherrypy.tree.mount(navigation.Navigation_cl(), '/navigation', staticConfig2_o)
 
