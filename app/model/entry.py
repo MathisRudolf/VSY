@@ -1,7 +1,5 @@
-from app import database
 
-
-class Entry(database):
+class Entry():
     def __init__(self):
         pass
 

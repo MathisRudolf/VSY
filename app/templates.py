@@ -7,20 +7,6 @@ import codecs
 
 import cherrypy
 
-# Method-Dispatching!
-
-# Übersicht Anforderungen / Methoden
-# (beachte: / relativ zu /template, siehe Konfiguration Server!)
-
-"""
-
-Anforderung       GET          PUT          POST          DELETE
-----------------------------------------------------------------
-/                 Alle         -            -             -
-                  Templates
-                  liefern
-
-"""
 
 #----------------------------------------------------------
 class Templates_cl(object):

@@ -33,13 +33,10 @@ class Navigation_cl(object):
    #-------------------------------------------------------
       # Hinweis: könnte man auch aus einer Datei einlesen
       retVal_o = [
-         {'action': 'fehler'   , 'text': 'Bearbeitung Fehlerdaten'},
+         {'action': ''   , 'text': 'Kalender'},
          {'action': 'projekt', 'text': 'Pflege Projekte'},
-         {'action': 'komponente', 'text': 'Pflege Komponenten'},
-         {'action': 'mitarbeiter', 'text': 'Pflege Daten Mitarbeiter'},
-         {'action': 'kategorien', 'text': 'Pflege Kategorien'},
-         {'action': 'prolist', 'text': 'Auswertung Projekt/Fehler'},
-         {'action': 'katlist', 'text': 'Auswertung Kategorie/Fehler'}
+         {'action': 'komponente', 'text': 'Pflege Komponenten'}
+
       ]
 
       return json.dumps(retVal_o)
