@@ -1,0 +1,11 @@
+{
+    "counter": {
+        "user": 1,
+        "entrys": 1
+    },
+
+    "stash":{
+        "user": [],
+        "entrys":[]
+    }
+}
